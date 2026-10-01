@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sorteador</title>
+
+    <!-- Fonte Sora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- CABEÇALHO -->
+        <header class="header">
+
+            <div class="logo-area">
+                <img
+                    src="assets/logo.png"
+                    alt="Logo do Sorteador"
+                    class="logo"
+                >
+
+                <div>
+                    <h1>Sorteador</h1>
+                    <p>Gere números de forma rápida e simples.</p>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- ÁREA PRINCIPAL -->
+        <section class="sorteador-card">
+
+            <div class="card-header">
+                <span class="tag">SORTEADOR</span>
+
+                <h2>Escolha os números</h2>
+
+                <p>
+                    Defina um intervalo e a quantidade de números
+                    que deseja sortear.
+                </p>
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+            <form id="formSorteador">
+
+                <div class="form-grid">
+
+                    <!-- MÍNIMO -->
+                    <div class="campo">
+
+                        <label for="minimo">
+                            Número mínimo
+                        </label>
+
+                        <input
+                            type="number"
+                            id="minimo"
+                            name="minimo"
+                            placeholder="Ex: 1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- MÁXIMO -->
+                    <div class="campo">
+
+                        <label for="maximo">
+                            Número máximo
+                        </label>
+
+                        <input
+                            type="number"
+                            id="maximo"
+                            name="maximo"
+                            placeholder="Ex: 100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- QUANTIDADE -->
+                    <div class="campo campo-full">
+
+                        <label for="quantidade">
+                            Quantidade de números
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidade"
+                            name="quantidade"
+                            placeholder="Ex: 5"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- MENSAGEM DE ERRO -->
+                <div
+                    id="mensagem"
+                    class="mensagem"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- BOTÃO -->
+                <button
+                    type="submit"
+                    id="btnSortear"
+                    class="btn-sortear"
+                >
+                    Sortear números
+                </button>
+
+            </form>
+
+
+            <!-- RESULTADO -->
+            <div
+                id="resultado"
+                class="resultado"
+                aria-live="polite"
+            >
+
+                <div class="resultado-vazio">
+
+                    <span class="resultado-icon">?</span>
+
+                    <p>
+                        Os números sorteados aparecerão aqui.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer class="footer">
+
+            <p>
+                Projeto Sorteador
+            </p>
+
+            <p>
+                Desenvolvido por Lindomar
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
