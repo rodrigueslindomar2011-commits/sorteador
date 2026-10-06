@@ -1,6 +1,12 @@
 /* =====================================================
    SORTEADOR
    CSS PRINCIPAL
+   Desenvolvido por Lindomar
+===================================================== */
+
+
+/* =====================================================
+   RESET
 ===================================================== */
 
 * {
@@ -9,136 +15,305 @@
     box-sizing: border-box;
 }
 
+
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
+
 :root {
+
     --background: #f5f7fb;
+
     --card: #ffffff;
+
+    --card-soft: #fafafa;
+
     --text: #17191c;
+
     --text-light: #6d737d;
+
+    --text-muted: #969ca5;
+
     --border: #e5e7eb;
+
+    --border-dark: #d8dce1;
+
     --primary: #111827;
+
     --primary-hover: #252d3a;
+
+    --primary-soft: #eef1f5;
+
     --success: #16a34a;
+
+    --success-soft: #ecfdf3;
+
     --error: #dc2626;
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+
+    --error-soft: #fef2f2;
+
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08);
+
+    --shadow-hover:
+        0 25px 70px rgba(0, 0, 0, 0.11);
+
+    --radius-card: 28px;
+
+    --transition:
+        0.25s ease;
 }
 
+
+/* =====================================================
+   BODY
+===================================================== */
+
 body {
+
     min-height: 100vh;
 
     font-family: "Sora", sans-serif;
 
     background:
         radial-gradient(
-            circle at top left,
-            rgba(0, 0, 0, 0.04),
-            transparent 35%
+            circle at 10% 0%,
+            rgba(0, 0, 0, 0.045),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(0, 0, 0, 0.025),
+            transparent 30%
         ),
         var(--background);
 
     color: var(--text);
+
+    -webkit-font-smoothing: antialiased;
+
+    text-rendering: optimizeLegibility;
 }
+
+
+/* =====================================================
+   SELEÇÃO DE TEXTO
+===================================================== */
+
+::selection {
+
+    background: var(--primary);
+
+    color: #ffffff;
+}
+
 
 /* =====================================================
    CONTAINER
 ===================================================== */
 
 .container {
+
     width: min(100% - 40px, 1100px);
+
     margin: 0 auto;
 
     padding: 50px 0;
 }
+
 
 /* =====================================================
    HEADER
 ===================================================== */
 
 .header {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 35px;
 }
 
+
 .logo-area {
+
     display: flex;
+
     align-items: center;
+
     gap: 16px;
 }
 
+
 .logo {
+
     width: 62px;
+
     height: 62px;
 
     object-fit: contain;
 
     border-radius: 16px;
+
+    transition:
+        transform var(--transition),
+        filter var(--transition);
 }
+
+
+.logo:hover {
+
+    transform: translateY(-2px) rotate(-2deg);
+
+    filter:
+        drop-shadow(
+            0 10px 18px rgba(0, 0, 0, 0.12)
+        );
+}
+
 
 .logo-area h1 {
+
     font-size: 28px;
+
     font-weight: 800;
+
     letter-spacing: -1px;
+
+    line-height: 1.1;
 }
 
+
 .logo-area p {
+
     margin-top: 5px;
 
     color: var(--text-light);
 
     font-size: 14px;
+
+    line-height: 1.5;
 }
 
+
 /* =====================================================
-   CARD
+   CARD PRINCIPAL
 ===================================================== */
 
 .sorteador-card {
+
     position: relative;
 
     background: var(--card);
 
     border: 1px solid var(--border);
-    border-radius: 28px;
+
+    border-radius: var(--radius-card);
 
     padding: 45px;
 
     box-shadow: var(--shadow);
 
     overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
+
+.sorteador-card:hover {
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =====================================================
+   DECORAÇÕES DO CARD
+===================================================== */
+
 .sorteador-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+
+    height: 260px;
+
+    top: -150px;
+
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(17, 24, 39, 0.07),
+            rgba(17, 24, 39, 0)
+        );
+
+    pointer-events: none;
+}
+
+
+.sorteador-card::after {
+
     content: "";
 
     position: absolute;
 
     width: 180px;
+
     height: 180px;
 
-    top: -90px;
-    right: -90px;
+    bottom: -120px;
+
+    left: -100px;
 
     border-radius: 50%;
 
-    background: rgba(0, 0, 0, 0.035);
+    background:
+        radial-gradient(
+            circle,
+            rgba(17, 24, 39, 0.035),
+            transparent 70%
+        );
+
+    pointer-events: none;
 }
+
 
 /* =====================================================
    CARD HEADER
 ===================================================== */
 
 .card-header {
+
+    position: relative;
+
+    z-index: 1;
+
     margin-bottom: 35px;
 }
 
+
 .tag {
+
     display: inline-flex;
+
+    align-items: center;
 
     padding: 7px 12px;
 
     margin-bottom: 14px;
+
+    border: 1px solid var(--border);
 
     border-radius: 999px;
 
@@ -147,12 +322,27 @@ body {
     color: #555b63;
 
     font-size: 11px;
+
     font-weight: 700;
 
     letter-spacing: 1px;
+
+    transition:
+        background var(--transition),
+        transform var(--transition);
 }
 
+
+.tag:hover {
+
+    background: #e9ebee;
+
+    transform: translateY(-1px);
+}
+
+
 .card-header h2 {
+
     font-size: clamp(28px, 5vw, 42px);
 
     line-height: 1.1;
@@ -162,7 +352,9 @@ body {
     margin-bottom: 12px;
 }
 
+
 .card-header p {
+
     max-width: 600px;
 
     color: var(--text-light);
@@ -172,11 +364,21 @@ body {
     font-size: 15px;
 }
 
+
 /* =====================================================
    FORMULÁRIO
 ===================================================== */
 
+#formSorteador {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
 .form-grid {
+
     display: grid;
 
     grid-template-columns: repeat(2, 1fr);
@@ -184,7 +386,9 @@ body {
     gap: 22px;
 }
 
+
 .campo {
+
     display: flex;
 
     flex-direction: column;
@@ -192,17 +396,29 @@ body {
     gap: 9px;
 }
 
+
 .campo-full {
+
     grid-column: 1 / -1;
 }
 
+
 .campo label {
+
     font-size: 13px;
 
     font-weight: 600;
+
+    color: var(--text);
 }
 
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
 .campo input {
+
     width: 100%;
 
     height: 56px;
@@ -215,7 +431,7 @@ body {
 
     outline: none;
 
-    background: #fafafa;
+    background: var(--card-soft);
 
     color: var(--text);
 
@@ -224,32 +440,56 @@ body {
     font-size: 15px;
 
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        transform var(--transition);
 }
+
 
 .campo input:hover {
+
     background: #ffffff;
+
+    border-color: #d5d9df;
 }
 
+
 .campo input:focus {
+
     background: #ffffff;
 
     border-color: #8a9099;
 
-    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+    box-shadow:
+        0 0 0 4px rgba(0, 0, 0, 0.05),
+        0 5px 15px rgba(0, 0, 0, 0.04);
+
+    transform: translateY(-1px);
 }
 
+
 .campo input::placeholder {
+
     color: #a1a6ad;
 }
 
+
+/* Remove setas exageradas de alguns navegadores */
+
+.campo input::-webkit-inner-spin-button,
+.campo input::-webkit-outer-spin-button {
+
+    opacity: 0.5;
+}
+
+
 /* =====================================================
-   MENSAGEM
+   MENSAGENS
 ===================================================== */
 
 .mensagem {
+
     min-height: 24px;
 
     margin-top: 18px;
@@ -259,13 +499,125 @@ body {
     font-size: 13px;
 
     font-weight: 600;
+
+    line-height: 1.5;
+
+    transition:
+        opacity var(--transition),
+        transform var(--transition);
 }
 
+
+.mensagem:empty {
+
+    opacity: 0;
+}
+
+
+.mensagem.erro {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 13px;
+
+    border: 1px solid rgba(220, 38, 38, 0.12);
+
+    border-radius: 12px;
+
+    background: var(--error-soft);
+
+    color: var(--error);
+}
+
+
+.mensagem.erro::before {
+
+    content: "!";
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 20px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: var(--error);
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.mensagem.sucesso {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 13px;
+
+    border: 1px solid rgba(22, 163, 74, 0.12);
+
+    border-radius: 12px;
+
+    background: var(--success-soft);
+
+    color: var(--success);
+}
+
+
+.mensagem.sucesso::before {
+
+    content: "✓";
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 20px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
 /* =====================================================
-   BOTÃO
+   BOTÃO PRINCIPAL
 ===================================================== */
 
 .btn-sortear {
+
+    position: relative;
+
     width: 100%;
 
     height: 58px;
@@ -288,64 +640,161 @@ body {
 
     cursor: pointer;
 
+    overflow: hidden;
+
     transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
+        transform var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
 }
 
+
+.btn-sortear::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 25%,
+            rgba(255,255,255,0.10),
+            transparent 75%
+        );
+
+    transform: translateX(-100%);
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.btn-sortear:hover::before {
+
+    transform: translateX(100%);
+}
+
+
 .btn-sortear:hover {
+
     background: var(--primary-hover);
 
     transform: translateY(-2px);
 
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
+
 .btn-sortear:active {
+
     transform: translateY(0);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08);
 }
+
+
+.btn-sortear:disabled {
+
+    cursor: not-allowed;
+
+    opacity: 0.7;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
 
 /* =====================================================
    RESULTADO
 ===================================================== */
 
 .resultado {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
     margin-top: 35px;
 
     padding: 30px;
 
     min-height: 150px;
 
-    border: 1px dashed #d8dce1;
+    border: 1px dashed var(--border-dark);
 
     border-radius: 20px;
 
-    background: #fafafa;
+    background:
+        linear-gradient(
+            145deg,
+            #fafafa,
+            #f7f8fa
+        );
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        transform var(--transition);
 }
 
+
+.resultado:hover {
+
+    border-color: #cfd4da;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8f9fa
+        );
+}
+
+
+/* =====================================================
+   ESTADO VAZIO
+===================================================== */
+
 .resultado-vazio {
+
     text-align: center;
 
     color: var(--text-light);
+
+    animation:
+        entradaResultado 0.5s ease;
 }
 
+
 .resultado-icon {
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     width: 48px;
+
     height: 48px;
 
     margin: 0 auto 12px;
+
+    border: 1px solid var(--border);
 
     border-radius: 50%;
 
@@ -358,17 +807,70 @@ body {
     font-size: 20px;
 
     font-weight: 700;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
+
 .resultado-vazio p {
+
     font-size: 13px;
+
+    line-height: 1.5;
 }
+
+
+/* =====================================================
+   CABEÇALHO DO RESULTADO
+===================================================== */
+
+.resultado-titulo {
+
+    width: 100%;
+
+    margin-bottom: 22px;
+
+    text-align: center;
+}
+
+
+.resultado-titulo span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--text-muted);
+
+    font-family: "Roboto Mono", monospace;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+.resultado-titulo strong {
+
+    display: block;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
 
 /* =====================================================
    NÚMEROS SORTEADOS
 ===================================================== */
 
-.resultado-numeros {
+.numeros-sorteados {
+
     width: 100%;
 
     display: flex;
@@ -380,20 +882,33 @@ body {
     gap: 12px;
 }
 
+
 .numero {
+
+    position: relative;
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     min-width: 62px;
+
     height: 62px;
 
     padding: 0 14px;
 
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
     border-radius: 16px;
 
-    background: var(--primary);
+    background:
+        linear-gradient(
+            145deg,
+            #1a2230,
+            #111827
+        );
 
     color: white;
 
@@ -403,31 +918,196 @@ body {
 
     font-weight: 700;
 
-    animation: aparecer 0.35s ease forwards;
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.12);
+
+    animation:
+        aparecer 0.35s ease forwards;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
+
+.numero:hover {
+
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 15px 28px rgba(0, 0, 0, 0.16);
+}
+
+
+/* Brilho interno */
+
+.numero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.08),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   ANIMAÇÃO DOS NÚMEROS
+===================================================== */
+
 @keyframes aparecer {
+
     from {
+
         opacity: 0;
 
-        transform: scale(0.75) translateY(10px);
+        transform:
+            scale(0.75)
+            translateY(10px);
     }
 
     to {
+
         opacity: 1;
 
-        transform: scale(1) translateY(0);
+        transform:
+            scale(1)
+            translateY(0);
     }
 }
+
+
+@keyframes entradaResultado {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(8px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   ÁREA DE AÇÕES DO RESULTADO
+===================================================== */
+
+.resultado-acoes {
+
+    display: flex;
+
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 24px;
+}
+
+
+.btn-copiar {
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    font-family: "Sora", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.btn-copiar:hover {
+
+    background: #f1f3f5;
+
+    border-color: #d2d6dc;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+
+.btn-copiar:active {
+
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   ESTADO DURANTE O SORTEIO
+===================================================== */
+
+.resultado.sorteando {
+
+    border-color: #cfd4da;
+
+    animation:
+        pulsarResultado 0.8s ease-in-out infinite alternate;
+}
+
+
+@keyframes pulsarResultado {
+
+    from {
+
+        transform: scale(1);
+    }
+
+    to {
+
+        transform: scale(0.995);
+    }
+}
+
 
 /* =====================================================
    FOOTER
 ===================================================== */
 
 .footer {
+
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 20px;
@@ -437,7 +1117,36 @@ body {
     color: var(--text-light);
 
     font-size: 12px;
+
+    line-height: 1.5;
 }
+
+
+.footer p {
+
+    transition:
+        color var(--transition);
+}
+
+
+.footer p:hover {
+
+    color: var(--text);
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+button:focus-visible,
+input:focus-visible {
+
+    outline: 3px solid rgba(17, 24, 39, 0.18);
+
+    outline-offset: 3px;
+}
+
 
 /* =====================================================
    RESPONSIVIDADE
@@ -446,45 +1155,221 @@ body {
 @media (max-width: 700px) {
 
     .container {
+
         width: min(100% - 24px, 1100px);
 
         padding: 25px 0;
     }
 
+
+    .header {
+
+        margin-bottom: 25px;
+    }
+
+
+    .logo-area {
+
+        gap: 12px;
+    }
+
+
+    .logo-area h1 {
+
+        font-size: 23px;
+    }
+
+
+    .logo-area p {
+
+        font-size: 12px;
+    }
+
+
+    .logo {
+
+        width: 52px;
+
+        height: 52px;
+    }
+
+
     .sorteador-card {
+
         padding: 28px 22px;
 
         border-radius: 22px;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr;
+
+    .card-header {
+
+        margin-bottom: 28px;
     }
 
+
+    .card-header h2 {
+
+        font-size: 30px;
+
+        letter-spacing: -1.2px;
+    }
+
+
+    .card-header p {
+
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
     .campo-full {
+
         grid-column: auto;
     }
 
-    .card-header h2 {
-        font-size: 30px;
+
+    .resultado {
+
+        padding: 24px 16px;
+
+        min-height: 160px;
     }
 
-    .header {
-        margin-bottom: 25px;
+
+    .numero {
+
+        min-width: 56px;
+
+        height: 56px;
+
+        padding: 0 12px;
+
+        border-radius: 14px;
+
+        font-size: 16px;
     }
 
-    .logo-area h1 {
-        font-size: 23px;
+
+    .numeros-sorteados {
+
+        gap: 9px;
     }
 
-    .logo {
-        width: 52px;
-        height: 52px;
-    }
 
     .footer {
+
         flex-direction: column;
 
         align-items: flex-start;
+
+        gap: 6px;
+
+        padding: 0 4px;
+    }
+}
+
+
+/* =====================================================
+   CELULARES PEQUENOS
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .container {
+
+        width: min(100% - 18px, 1100px);
+
+        padding-top: 18px;
+    }
+
+
+    .sorteador-card {
+
+        padding: 24px 17px;
+    }
+
+
+    .logo-area h1 {
+
+        font-size: 20px;
+    }
+
+
+    .logo-area p {
+
+        font-size: 11px;
+    }
+
+
+    .logo {
+
+        width: 46px;
+
+        height: 46px;
+    }
+
+
+    .card-header h2 {
+
+        font-size: 27px;
+    }
+
+
+    .campo input {
+
+        height: 53px;
+    }
+
+
+    .btn-sortear {
+
+        height: 55px;
+    }
+
+
+    .resultado {
+
+        padding: 20px 12px;
+    }
+
+
+    .numero {
+
+        min-width: 52px;
+
+        height: 52px;
+
+        font-size: 15px;
+    }
+}
+
+
+/* =====================================================
+   REDUÇÃO DE MOVIMENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
     }
 }
