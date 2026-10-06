@@ -1,73 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
+    <!-- =====================================================
+         CONFIGURAÇÕES
+    ====================================================== -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sorteador de números simples, rápido e gratuito."
+    >
+
+    <meta
+        name="author"
+        content="Lindomar"
+    >
 
     <title>Sorteador</title>
 
-    <!-- Fonte Sora -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- =====================================================
+         FONTES
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
     <main class="container">
 
-        <!-- CABEÇALHO -->
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
         <header class="header">
 
             <div class="logo-area">
+
                 <img
                     src="assets/logo.png"
                     alt="Logo do Sorteador"
                     class="logo"
                 >
 
+
                 <div>
+
                     <h1>Sorteador</h1>
-                    <p>Gere números de forma rápida e simples.</p>
+
+                    <p>
+                        Gere números de forma rápida e simples.
+                    </p>
+
                 </div>
+
             </div>
 
         </header>
 
 
-        <!-- ÁREA PRINCIPAL -->
-        <section class="sorteador-card">
+        <!-- =================================================
+             ÁREA PRINCIPAL DO SORTEADOR
+        ================================================== -->
+
+        <section
+            class="sorteador-card"
+            aria-labelledby="titulo-sorteador"
+        >
+
+
+            <!-- =============================================
+                 CABEÇALHO DO CARD
+            ============================================== -->
 
             <div class="card-header">
-                <span class="tag">SORTEADOR</span>
 
-                <h2>Escolha os números</h2>
+                <span class="tag">
+                    SORTEADOR
+                </span>
+
+
+                <h2 id="titulo-sorteador">
+                    Escolha os números
+                </h2>
+
 
                 <p>
                     Defina um intervalo e a quantidade de números
                     que deseja sortear.
                 </p>
+
             </div>
 
 
-            <!-- FORMULÁRIO -->
+            <!-- =============================================
+                 FORMULÁRIO
+            ============================================== -->
+
             <form id="formSorteador">
+
 
                 <div class="form-grid">
 
-                    <!-- MÍNIMO -->
+
+                    <!-- =====================================
+                         NÚMERO MÍNIMO
+                    ====================================== -->
+
                     <div class="campo">
 
                         <label for="minimo">
                             Número mínimo
                         </label>
+
 
                         <input
                             type="number"
@@ -75,17 +161,22 @@
                             name="minimo"
                             placeholder="Ex: 1"
                             required
+                            inputmode="numeric"
                         >
 
                     </div>
 
 
-                    <!-- MÁXIMO -->
+                    <!-- =====================================
+                         NÚMERO MÁXIMO
+                    ====================================== -->
+
                     <div class="campo">
 
                         <label for="maximo">
                             Número máximo
                         </label>
+
 
                         <input
                             type="number"
@@ -93,17 +184,22 @@
                             name="maximo"
                             placeholder="Ex: 100"
                             required
+                            inputmode="numeric"
                         >
 
                     </div>
 
 
-                    <!-- QUANTIDADE -->
+                    <!-- =====================================
+                         QUANTIDADE
+                    ====================================== -->
+
                     <div class="campo campo-full">
 
                         <label for="quantidade">
                             Quantidade de números
                         </label>
+
 
                         <input
                             type="number"
@@ -112,6 +208,7 @@
                             placeholder="Ex: 5"
                             min="1"
                             required
+                            inputmode="numeric"
                         >
 
                     </div>
@@ -119,7 +216,10 @@
                 </div>
 
 
-                <!-- MENSAGEM DE ERRO -->
+                <!-- =========================================
+                     MENSAGEM
+                ========================================== -->
+
                 <div
                     id="mensagem"
                     class="mensagem"
@@ -128,7 +228,10 @@
                 ></div>
 
 
-                <!-- BOTÃO -->
+                <!-- =========================================
+                     BOTÃO SORTEAR
+                ========================================== -->
+
                 <button
                     type="submit"
                     id="btnSortear"
@@ -140,16 +243,31 @@
             </form>
 
 
-            <!-- RESULTADO -->
+            <!-- =================================================
+                 RESULTADO
+            ================================================== -->
+
             <div
                 id="resultado"
                 class="resultado"
                 aria-live="polite"
+                aria-label="Resultado do sorteio"
             >
+
+
+                <!-- =============================================
+                     ESTADO INICIAL
+                ============================================== -->
 
                 <div class="resultado-vazio">
 
-                    <span class="resultado-icon">?</span>
+                    <span
+                        class="resultado-icon"
+                        aria-hidden="true"
+                    >
+                        ?
+                    </span>
+
 
                     <p>
                         Os números sorteados aparecerão aqui.
@@ -159,15 +277,20 @@
 
             </div>
 
+
         </section>
 
 
-        <!-- RODAPÉ -->
+        <!-- =================================================
+             RODAPÉ
+        ================================================== -->
+
         <footer class="footer">
 
             <p>
                 Projeto Sorteador
             </p>
+
 
             <p>
                 Desenvolvido por Lindomar
@@ -175,11 +298,18 @@
 
         </footer>
 
+
     </main>
 
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="js/script.js"
+    ></script>
 
 </body>
+
 </html>
